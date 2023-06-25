@@ -1,32 +1,23 @@
 import { galleryItems } from './gallery-items.js';
-// Change code below this line
 
-console.log(galleryItems);
+const galleryContainer = document.querySelector('.gallery');
+const markup = galleryItems.reduce(
+  (acc, { original, preview, description }) =>
+    (acc += `<li>
+  <a class="gallery__item" href="${original}">
+    <img
+      class="gallery__image"
+      src="${preview}"
+      alt="${description}"
+    />
+  </a>
+</li>`),
+  ''
+);
 
-import { galleryItems } from './gallery-items.js';
-// Change code below this line
-const galleryElements = document.querySelector('.gallery');
-
-
-// Формуємо розмітку галереї на основі масиву даних
-const createGalleryMarkup = galleryItems => {
-    return galleryItems
-    .map(({ preview, original, description }) => {
-        return `
-            <a class="gallery__item" href=${original}>
-                <img class="gallery__image" src=${preview} alt=${description} />
-            </a>`;
-    })
-    .join('');
-};
-
-// Рендеримо розмітку галереї
-galleryElements.insertAdjacentHTML('beforeend', createGalleryMarkup(galleryItems));
+galleryContainer.insertAdjacentHTML('beforeend', markup);
 
 const lightbox = new SimpleLightbox('.gallery a', {
-    overlayOpacity: 0.5,
-    captionDelay: 250,
-    captionsData: 'alt',
-    fadeSpeed: 250,
-    rtl: true,
+  captionsData: 'alt',
+  captionDelay: 250,
 });
