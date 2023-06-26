@@ -42,9 +42,3 @@
 .gallery__link:hover {
   cursor: zoom-in;
 }
-
-
-.simple-lightbox .sl-caption {
-  background-color: transparent !important;
-  font-size: 1.5rem !important;
-}
